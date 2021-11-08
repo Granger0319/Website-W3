@@ -1,0 +1,20 @@
+var ourTeam = [
+  {
+    playerType: "defenders",
+    names: [
+      "Chloe",
+      "Luke",
+      "Colton"
+    ]
+  },
+  {
+    playerType: "midfield",
+    names: [
+      "Haleigh",
+      "Anna",
+      "Jolie"
+    ]
+  }
+];
+ourTeams[0].names[1]; // "defenders"
+ourTeams[1].names[0]; // "midfield"
