@@ -13,8 +13,24 @@ var ourTeam = [
       "Haleigh",
       "Anna",
       "Jolie"
+  },
+  {
+    playerType: "frontline",
+    names: [
+      "Alexandria",
+      "Colette",
+      "Avery"
     ]
-  }
+  }, 
+  {
+     playerType: "substitutes",
+     names: [
+       "Savannah",
+       "Cameron",
+       "JR"
+     ]  
 ];
-ourTeams[0].names[1]; // "defenders"
+ourTeams[1].names[0]; // "defenders"
 ourTeams[1].names[0]; // "midfield"
+ourTeams[1].names[0]; // "frontline"
+ourTeams[1].names[0]; // "substitutes"
