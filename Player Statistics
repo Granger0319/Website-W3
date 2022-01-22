@@ -1,0 +1,124 @@
+//main.cpp
+#include<iostream>
+#include<iomanip>
+#include<string>
+using namespace std;
+//structure of Player
+struct Player
+{
+   string name;
+   int jerseyNumber;
+   int score;
+};
+//function prototypes
+void GetPlayerInfo(Player &);
+void ShowPlayerInfo(const Player);
+int GetTotalPoints(const Player[ ], int);
+void ShowHighest(Player [ ], int);
+
+int main()
+{
+   int index;
+   //Change this constant SIZE TO 12 to read 12 player's name, jersey number and score values
+  
+   /*For sample input and output, only SIZE=3 taken to demonstrate the program*/
+   const int SIZE=3;
+   Player players[SIZE];
+
+
+   //read player data
+   for(index=0;index<SIZE;index++)
+       GetPlayerInfo(players[index]);
+
+   cout<<endl;
+   //print heading
+   cout<<left<<setw(20)<<"Name"
+       <<setw(20)<<"Jersey#"
+       <<setw(20)<<"Score"<<endl;
+
+   for(index=0;index<SIZE;index++)
+       ShowPlayerInfo(players[index]);
+
+   //print highest score on console
+   printf("Total points of players : %5d\n",GetTotalPoints(players,SIZE));
+   ShowHighest(players,SIZE);
+
+   system("pause");
+   return 0;
+}
+
+/*Function ,ShowPlayerInfo that takes a Player object and
+display the results on console output*/
+void ShowPlayerInfo(const Player p)
+{
+   cout<<left<<setw(20)<<p.name
+       <<setw(20)<<p.jerseyNumber
+       <<setw(20)<<p.score<<endl;
+}
+
+/*Function to read player information*/
+void GetPlayerInfo(Player &playerInfo)
+{
+   cout<<"Enter player's name : ";
+   cin>>playerInfo.name;
+   //Do not accept negative jersey number
+   do
+   {
+       cout<<"Enter player's jersey number : ";
+       cin>>playerInfo.jerseyNumber;
+
+       if(playerInfo.jerseyNumber<0)
+           cout<<"Error: Invalid jersey number ."<<endl;
+
+   }while(playerInfo.jerseyNumber<0);
+
+   //Do not accept negative score
+   do
+   {
+       cout<<"Enter player's score : ";
+       cin>>playerInfo.score;
+
+       if(playerInfo.score<0)
+           cout<<"Error: Invalid score ."<<endl;
+
+   }while(playerInfo.score<0);
+}
+
+/*Function ,GetTotalPoints that takes Players array and its size as input
+and then find the total points of score and return total score.*/
+int GetTotalPoints(const Player players[ ], int size)
+{
+   int totalPoints=0;
+   int index=0;
+   for(index=0;index<size;index++)
+       totalPoints+=players[index].score;
+
+   return totalPoints;
+}
+
+/*Function, ShowHighest that takes Player array and its size as input
+and then find the highest score value on console output.*/
+void ShowHighest(Player players[ ], int size)
+{
+   //Assume that the first player's score is highest
+   int highest=players[0].score;
+
+   string playerName;
+   //Assign player at index,0 name to playerName
+   playerName=players[0].name;
+
+   int index=0;
+   for(index=0;index<size;index++)
+   {
+       //check if score at index is greater than highest value
+       if(players[index].score>highest)
+       {
+           //Then, update the highest score and name values
+           highest=players[index].score;
+           playerName=players[index].name;
+       }
+   }
+   //print highest score player and its score
+   cout<<"Player's Name : "<<playerName<<endl;
+   cout<<"Highest score : "<<highest<<endl;
+}
