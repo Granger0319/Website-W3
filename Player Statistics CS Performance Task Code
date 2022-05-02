@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Putting User Input into JS Objects</title>
+   <style>
+       .formBox{
+           padding: 0.5rem 2rem;
+       }
+   </style>
+</head>
+<body>
+   <form>
+       <div class="formBox">
+           <label for="title">Player Name</label>
+           <input type="text" id="title" placeholder="Title"/>
+       </div>
+       <div class="formBox">
+           <label for="title">Shots Taken</label>
+           <input type="text" id="title" placeholder="Title"/>
+       </div>
+       <div class="formBox">
+           <label for="title">Goals</label>
+           <input type="text" id="title" placeholder="Title"/>
+       </div>
+       <div class="formBox">
+           <label for="title">Assists</label>
+           <input type="text" id="title" placeholder="Title"/>
+       </div>
+       <div class="formBox">
+           <label for="title">Steals</label>
+           <input type="text" id="title" placeholder="Title"/>
+       </div>
+       <div class="formBox">
+           <label for="title">Goalie Blocks</label>
+           <input type="text" id="title" placeholder="Title"/>
+       </div>
+      <div class="formBox">
+           <label for="PN">Player Name</label>
+           <input type="number" id="Player Name" placeholder="Player Name"/>
+       </div>
+       <div class="formBox">
+           <button id="btn">Click to Add</button>
+       </div>
+       <div class="formBox">
+           <label for="ST">Shots Taken</label>
+           <input type="number" id="Shots Taken" placeholder="Shots Taken"/>
+       </div>
+       <div class="formBox">
+           <button id="btn">Click to Add</button>
+       </div>
+       <div class="formBox">
+           <label for="G">Goals</label>
+           <input type="number" id="Goals" placeholder="Goals"/>
+       </div>
+       <div class="formBox">
+           <button id="btn">Click to Add</button>
+       </div>
+       <div class="formBox">
+           <label for="A">Assists</label>
+           <input type="number" id="Assists" placeholder="Assists"/>
+       </div>
+       <div class="formBox">
+           <button id="btn">Click to Add</button>
+       </div>
+       <div class="formBox">
+           <label for="S">Steals</label>
+           <input type="number" id="Steals" placeholder="Steals"/>
+       </div>
+       <div class="formBox">
+           <button id="btn">Click to Add</button
+       </div>
+       <div class="formBox">
+           <label for="GB">Goalie Blocks</label>
+           <input type="number" id="Goalie Blocks" placeholder="Goalie Blocks"/>
+       </div>
+       <div class="formBox">
+           <button id="btn">Click to Add</button>
+       </div>
+       <div id="msg">
+           <pre></pre>
+      </div>
+ </form>
+   <script>
+       let Player Name = [ ];
+       // example {id:1592304983049, title: 'Player Name', Shots Taken: 6 }
+       const addPlayer Name = (ev)=>{
+           ev.preventDefault(); //to stop the form submitting
+           let Player Name = {
+               id: Date.now(),
+               title: document.getElementById('Player Name').value,
+               year: document.getElementById('ST').value
+           }
+           Player Name.push(Player Name);
+           document.forms[0].reset(); // to clear the form for the next entries
+           //document.querySelector('form').reset();
+
+           //for display purposes only
+           console.warn('added' , {Player Name} );
+           let pre = document.querySelector('#msg pre');
+           pre.textContent = '\n' + JSON.stringify(Player Name, '\t', 2);
+
+           //saving to localStorage
+           localStorage.setItem('Playerstatistics', JSON.stringify(Player Name) );
+       }
+       document.addEventListener('DOMContentLoaded', ()=>{
+           document.getElementById('btn').addEventListener('click', addPlayer Name);
+       });
+   </script>
+</body>
+</html>
